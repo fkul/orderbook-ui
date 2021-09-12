@@ -2,11 +2,11 @@ import { styled } from "linaria/react"
 
 export const Grid = styled.div`
   display: grid;
-  width: 50%;
+  width: 100%;
   grid-template-columns: repeat(3, 1fr);
   text-align: right;
   & > * {
-    padding: 5px 30px 5px 10px;
+    padding: 5px 30% 5px 10%;
   }
 `
 
@@ -15,6 +15,12 @@ export const HeaderItem = styled.div`
   text-transform: uppercase;
   color: var(--color-text-secondary);
   border-bottom: 1px solid var(--color-bg-primary);
+
+  @media (max-width: 480px) {
+    .bids & {
+      display: none;
+    }
+  }
 `
 
 export const HeaderPrice = styled(HeaderItem)`
@@ -38,13 +44,22 @@ interface RowItemProps {
 export const RowItem = styled.div<RowItemProps>`
   grid-row-start: ${props => props.row};
   z-index: 1;
+
+  @media (max-width: 480px) {
+    .asks & {
+      grid-row-start: ${props => 100 - props.row};
+    }
+  }
 `
 
 export const RowPrice = styled(RowItem)`
   grid-column: 1 / span 1;
   .bids & {
-    grid-column-start: 3;
     color: var(--color-bid-primary);
+
+    @media (min-width: 481px) {
+      grid-column-start: 3;
+    }
   }
   .asks & {
     color: var(--color-ask-primary);
@@ -58,7 +73,9 @@ export const RowSize = styled(RowItem)`
 export const RowTotal = styled(RowItem)`
   grid-column: 3 / span 1;
   .bids & {
-    grid-column-start: 1;
+    @media (min-width: 481px) {
+      grid-column-start: 1;
+    }
   }
 `
 
@@ -75,6 +92,9 @@ export const RowDepth = styled(RowItem)<RowDepthProps>`
   z-index: 0;
   .bids & {
     background-color: var(--color-bid-secondary);
-    transform-origin: 100% 0;
+
+    @media (min-width: 481px) {
+      transform-origin: 100% 0;
+    }
   }
 `

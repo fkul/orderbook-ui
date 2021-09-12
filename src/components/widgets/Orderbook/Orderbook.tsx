@@ -1,14 +1,23 @@
+import { useMediaQuery } from "react-responsive"
 import Panel from "@/components/ui/Panel"
 import { OrderbookLevel } from "@/types/OrderbookLevel"
 import OrderbookSideSide from "./OrderbookSide"
 import OrderbookSpread from "./OrderbookSpread"
-import { OrderbookWrapper, HeaderSpreadWrapper } from "./Orderbook.styles"
+import {
+  OrderbookWrapper,
+  SpreadWrapperDesktop,
+  SpreadWrapperMobile,
+} from "./Orderbook.styles"
 
 interface OrderbookProps {
-  maxOrderCount?: number
+  maxLevelCountDesktop?: number
+  maxLevelCountMobile?: number
 }
 
-const Orderbook = ({ maxOrderCount = 16 }: OrderbookProps) => {
+const Orderbook = ({
+  maxLevelCountDesktop = 16,
+  maxLevelCountMobile = 12,
+}: OrderbookProps) => {
   const book = {
     numLevels: 25,
     feed: "book_ui_2_snapshot",
@@ -69,11 +78,11 @@ const Orderbook = ({ maxOrderCount = 16 }: OrderbookProps) => {
     product_id: "PI_XBTUSD",
   }
 
-  const analyzeOrders = (rawOrders: number[][], maxOrderCount: number) => {
+  const analyzeOrders = (rawOrders: number[][], maxLevelCount: number) => {
     const orders: OrderbookLevel[] = []
     let totalSize = 0
 
-    for (let i = 0; i < rawOrders.length && i < maxOrderCount; i++) {
+    for (let i = 0; i < rawOrders.length && i < maxLevelCount; i++) {
       totalSize += rawOrders[i][1]
       orders.push({
         price: rawOrders[i][0],
@@ -85,8 +94,10 @@ const Orderbook = ({ maxOrderCount = 16 }: OrderbookProps) => {
     return orders
   }
 
-  const bids = analyzeOrders(book.bids, maxOrderCount)
-  const asks = analyzeOrders(book.asks, maxOrderCount)
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" })
+  const maxLevelCount = isMobile ? maxLevelCountMobile : maxLevelCountDesktop
+  const bids = analyzeOrders(book.bids, maxLevelCount)
+  const asks = analyzeOrders(book.asks, maxLevelCount)
   const maxTotal = Math.max(
     bids[bids.length - 1]?.total || 0,
     asks[asks.length - 1]?.total || 0
@@ -97,12 +108,12 @@ const Orderbook = ({ maxOrderCount = 16 }: OrderbookProps) => {
   return (
     <Panel>
       <Panel.Header title="Orderbook">
-        <HeaderSpreadWrapper>
+        <SpreadWrapperDesktop>
           <OrderbookSpread
             spread={spread}
             spreadPercentage={spreadPercentage}
           />
-        </HeaderSpreadWrapper>
+        </SpreadWrapperDesktop>
       </Panel.Header>
       <Panel.Body>
         <OrderbookWrapper>
@@ -111,6 +122,12 @@ const Orderbook = ({ maxOrderCount = 16 }: OrderbookProps) => {
             sortedOrders={bids}
             maxTotal={maxTotal}
           />
+          <SpreadWrapperMobile>
+            <OrderbookSpread
+              spread={spread}
+              spreadPercentage={spreadPercentage}
+            />
+          </SpreadWrapperMobile>
           <OrderbookSideSide
             type="asks"
             sortedOrders={asks}
