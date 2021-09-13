@@ -1,0 +1,1497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage renders correctly 1`] = `
+<div>
+  <div
+    className="pxhjfar"
+  >
+    <div
+      className="pa9xihz"
+    >
+      <span>
+        Orderbook
+      </span>
+      <div
+        className="stbrire"
+      >
+        <span
+          className="szddl1f"
+        >
+          Spread: 
+          9.0
+           (
+          0.02
+          %)
+        </span>
+      </div>
+    </div>
+    <div
+      className="p2qo8y3"
+    >
+      <div
+        className="o1cmc0ar"
+      >
+        <div
+          className="bids g94upvf"
+        >
+          <div
+            className="h12st6hf h1aafi4k"
+          >
+            Price
+          </div>
+          <div
+            className="h1y505xf h1aafi4k"
+          >
+            Size
+          </div>
+          <div
+            className="h1kpbq7u h1aafi4k"
+          >
+            Total
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+                "--r1hr43tv-0": "0.00025623833581742166",
+              }
+            }
+            width={0.00025623833581742166}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            45,196.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            120
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            120
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+                "--r1hr43tv-0": "0.018551655513181328",
+              }
+            }
+            width={0.018551655513181328}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            45,195.51
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            8,568
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            8,688
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+                "--r1hr43tv-0": "0.03086390754920844",
+              }
+            }
+            width={0.03086390754920844}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            45,192.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            5,766
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            14,454
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+                "--r1hr43tv-0": "0.03557015165038842",
+              }
+            }
+            width={0.03557015165038842}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            45,190.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            2,204
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            16,658
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+                "--r1hr43tv-0": "0.04624674897611432",
+              }
+            }
+            width={0.04624674897611432}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            45,185.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            5,000
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            21,658
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+                "--r1hr43tv-0": "0.13767258719577036",
+              }
+            }
+            width={0.13767258719577036}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            45,183.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            42,816
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            64,474
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+                "--r1hr43tv-0": "0.3444014058943359",
+              }
+            }
+            width={0.3444014058943359}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            45,181.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            96,814
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            161,288
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+                "--r1hr43tv-0": "0.3536195800253676",
+              }
+            }
+            width={0.3536195800253676}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            45,179.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            4,317
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            165,605
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+                "--r1hr43tv-0": "0.7481945873922198",
+              }
+            }
+            width={0.7481945873922198}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            45,177.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            184,785
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            350,390
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+                "--r1hr43tv-0": "0.769599029710835",
+              }
+            }
+            width={0.769599029710835}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            45,174.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            10,024
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            360,414
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+                "--r1hr43tv-0": "0.7949879781514112",
+              }
+            }
+            width={0.7949879781514112}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            45,172.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            11,890
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            372,304
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+                "--r1hr43tv-0": "0.9198443779173803",
+              }
+            }
+            width={0.9198443779173803}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            45,171.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            58,472
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            430,776
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+                "--r1hr43tv-0": "0.9625507672202839",
+              }
+            }
+            width={0.9625507672202839}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            45,170.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            20,000
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            450,776
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+                "--r1hr43tv-0": "0.9773036894049719",
+              }
+            }
+            width={0.9773036894049719}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            45,166.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            6,909
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            457,685
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+                "--r1hr43tv-0": "0.9933185853935608",
+              }
+            }
+            width={0.9933185853935608}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            45,161.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            7,500
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            465,185
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+                "--r1hr43tv-0": "1",
+              }
+            }
+            width={1}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            45,159.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            3,129
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            468,314
+          </div>
+        </div>
+        <div
+          className="s1kh98xk"
+        >
+          <span
+            className="szddl1f"
+          >
+            Spread: 
+            9.0
+             (
+            0.02
+            %)
+          </span>
+        </div>
+        <div
+          className="asks g94upvf"
+        >
+          <div
+            className="h12st6hf h1aafi4k"
+          >
+            Price
+          </div>
+          <div
+            className="h1y505xf h1aafi4k"
+          >
+            Size
+          </div>
+          <div
+            className="h1kpbq7u h1aafi4k"
+          >
+            Total
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+                "--r1hr43tv-0": "0.00023488514116596984",
+              }
+            }
+            width={0.00023488514116596984}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            45,205.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            110
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "2",
+                "--r1aw80f9-1": "98",
+              }
+            }
+          >
+            110
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+                "--r1hr43tv-0": "0.004464953001618572",
+              }
+            }
+            width={0.004464953001618572}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            45,206.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            1,981
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "3",
+                "--r1aw80f9-1": "97",
+              }
+            }
+          >
+            2,091
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+                "--r1hr43tv-0": "0.011225374428268214",
+              }
+            }
+            width={0.011225374428268214}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            45,208.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            3,166
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "4",
+                "--r1aw80f9-1": "96",
+              }
+            }
+          >
+            5,257
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+                "--r1hr43tv-0": "0.018982990045140653",
+              }
+            }
+            width={0.018982990045140653}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            45,210.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            3,633
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "5",
+                "--r1aw80f9-1": "95",
+              }
+            }
+          >
+            8,890
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+                "--r1hr43tv-0": "0.03697092121952365",
+              }
+            }
+            width={0.03697092121952365}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            45,213.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            8,424
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "6",
+                "--r1aw80f9-1": "94",
+              }
+            }
+          >
+            17,314
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+                "--r1hr43tv-0": "0.03757948726709003",
+              }
+            }
+            width={0.03757948726709003}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            45,214.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            285
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "7",
+                "--r1aw80f9-1": "93",
+              }
+            }
+          >
+            17,599
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+                "--r1hr43tv-0": "0.04291778592995298",
+              }
+            }
+            width={0.04291778592995298}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            45,217.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            2,500
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "8",
+                "--r1aw80f9-1": "92",
+              }
+            }
+          >
+            20,099
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+                "--r1hr43tv-0": "0.0879409968525391",
+              }
+            }
+            width={0.0879409968525391}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            45,219.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            21,085
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "9",
+                "--r1aw80f9-1": "91",
+              }
+            }
+          >
+            41,184
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+                "--r1hr43tv-0": "0.0903325546535017",
+              }
+            }
+            width={0.0903325546535017}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            45,221.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            1,120
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "10",
+                "--r1aw80f9-1": "90",
+              }
+            }
+          >
+            42,304
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+                "--r1hr43tv-0": "0.10469257805660305",
+              }
+            }
+            width={0.10469257805660305}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            45,222.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            6,725
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "11",
+                "--r1aw80f9-1": "89",
+              }
+            }
+          >
+            49,029
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+                "--r1hr43tv-0": "0.35194976020362406",
+              }
+            }
+            width={0.35194976020362406}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            45,226.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            115,794
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "12",
+                "--r1aw80f9-1": "88",
+              }
+            }
+          >
+            164,823
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+                "--r1hr43tv-0": "0.36099497345797904",
+              }
+            }
+            width={0.36099497345797904}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            45,228.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            4,236
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "13",
+                "--r1aw80f9-1": "87",
+              }
+            }
+          >
+            169,059
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+                "--r1hr43tv-0": "0.37220540064999125",
+              }
+            }
+            width={0.37220540064999125}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            45,229.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            5,250
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "14",
+                "--r1aw80f9-1": "86",
+              }
+            }
+          >
+            174,309
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+                "--r1hr43tv-0": "0.3851347600114453",
+              }
+            }
+            width={0.3851347600114453}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            45,231.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            6,055
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "15",
+                "--r1aw80f9-1": "85",
+              }
+            }
+          >
+            180,364
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+                "--r1hr43tv-0": "0.3958113573371712",
+              }
+            }
+            width={0.3958113573371712}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            45,234.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            5,000
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "16",
+                "--r1aw80f9-1": "84",
+              }
+            }
+          >
+            185,364
+          </div>
+          <div
+            className="r1hr43tv r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+                "--r1hr43tv-0": "0.4556003023612363",
+              }
+            }
+            width={0.4556003023612363}
+          />
+          <div
+            className="r13b7p9b r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            45,235.00
+          </div>
+          <div
+            className="r10t1fmx r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            28,000
+          </div>
+          <div
+            className="r1797qn4 r1aw80f9"
+            style={
+              Object {
+                "--r1aw80f9-0": "17",
+                "--r1aw80f9-1": "83",
+              }
+            }
+          >
+            213,364
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
