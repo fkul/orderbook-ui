@@ -2,6 +2,9 @@ import { styled } from "linaria/react"
 
 export const OrderbookWrapper = styled.div`
   display: flex;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 480px) {
     flex-wrap: wrap;

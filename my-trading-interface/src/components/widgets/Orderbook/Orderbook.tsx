@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react"
 import throttle from "lodash/throttle"
 import { useMediaQuery } from "react-responsive"
 import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
+import Loader from "@/components/ui/Loader"
 import Panel from "@/components/ui/Panel"
 import { OrderbookLevel } from "@/types/OrderbookLevel"
 import OrderbookSideSide from "./OrderbookSide"
@@ -97,24 +98,30 @@ const Orderbook = ({
       </Panel.Header>
       <Panel.Body>
         <OrderbookWrapper>
-          <OrderbookSideSide
-            type="bids"
-            sortedOrders={bids}
-            maxTotal={maxTotal}
-          />
-          {spread && spreadPercentage && (
-            <SpreadWrapperMobile>
-              <OrderbookSpread
-                spread={spread}
-                spreadPercentage={spreadPercentage}
+          {!book ? (
+            <Loader />
+          ) : (
+            <>
+              <OrderbookSideSide
+                type="bids"
+                sortedOrders={bids}
+                maxTotal={maxTotal}
               />
-            </SpreadWrapperMobile>
+              {spread && spreadPercentage && (
+                <SpreadWrapperMobile>
+                  <OrderbookSpread
+                    spread={spread}
+                    spreadPercentage={spreadPercentage}
+                  />
+                </SpreadWrapperMobile>
+              )}
+              <OrderbookSideSide
+                type="asks"
+                sortedOrders={asks}
+                maxTotal={maxTotal}
+              />
+            </>
           )}
-          <OrderbookSideSide
-            type="asks"
-            sortedOrders={asks}
-            maxTotal={maxTotal}
-          />
         </OrderbookWrapper>
       </Panel.Body>
     </Panel>
