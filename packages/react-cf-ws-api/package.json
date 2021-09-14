@@ -1,0 +1,20 @@
+{
+  "name": "@fkul/react-cf-ws-api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react-use-websocket": "^2.7.1"
+  }
+}
