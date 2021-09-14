@@ -1,8 +1,8 @@
 import { FeedData } from "../types/FeedData"
 
-type BookUi1Data = {
+export type BookUi1Data = {
   feed: string
-  product_id: string
+  productId: string
   asks: number[][]
   bids: number[][]
   numLevels: number

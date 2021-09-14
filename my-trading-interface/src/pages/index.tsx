@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import Orderbook from "../components/widgets/Orderbook"
+import Orderbook from "@/components/widgets/Orderbook"
 
 const Home: NextPage = () => {
   return (
