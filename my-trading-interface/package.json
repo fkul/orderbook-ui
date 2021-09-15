@@ -27,6 +27,7 @@
     "@babel/preset-env": "^7.15.6",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
+    "@types/jest": "^27.0.1",
     "@types/react": "17.0.20",
     "@types/react-page-visibility": "^6.4.1",
     "@types/react-test-renderer": "^17.0.1",

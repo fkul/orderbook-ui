@@ -17,6 +17,7 @@ type CfWs = {
     callback: (data?: any) => void
   ): void
   unsubscribePub(feed: string, products: string[]): void
+  getSubscriptionStatus(feed: string): string | null
 }
 
 const CF_URL = "wss://www.cryptofacilities.com/ws/v1"
@@ -41,7 +42,7 @@ export const useCfWs = (): CfWs => {
       console.log("Connection error occurred")
     },
     filter: message => {
-      const jsonMsg = parseMessage(message)
+      const jsonMsg = parseMessage(message.data)
 
       if (!jsonMsg.feed || !hasSubscription(jsonMsg.feed)) {
         return false
@@ -70,6 +71,7 @@ export const useCfWs = (): CfWs => {
       status: "",
       callback: callback,
     }
+
     addSubscription(feed, subscription)
 
     if (ws.readyState === ReadyState.OPEN) {
@@ -88,5 +90,10 @@ export const useCfWs = (): CfWs => {
     ws.sendJsonMessage(message)
   }
 
-  return { subscribePub, unsubscribePub }
+  const getSubscriptionStatus = (feed: string): string | null => {
+    const subscription = getSubscription(feed)
+    return subscription.hasOwnProperty("status") ? subscription.status : null
+  }
+
+  return { subscribePub, unsubscribePub, getSubscriptionStatus }
 }

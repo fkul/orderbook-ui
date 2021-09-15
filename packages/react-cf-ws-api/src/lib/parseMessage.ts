@@ -1,10 +1,10 @@
 import { FeedDataName } from "./dataFactory"
 import { onUpdate, onSnapshot } from "./data"
 
-export const parseMessage = (message: MessageEvent<any>): any => {
+export const parseMessage = (message: any): any => {
   const jsonMsg = (() => {
     try {
-      return JSON.parse(message.data)
+      return JSON.parse(message)
     } catch (e) {
       return {}
     }

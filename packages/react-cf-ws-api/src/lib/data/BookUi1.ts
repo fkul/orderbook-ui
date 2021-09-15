@@ -12,8 +12,8 @@ export class BookUi1 implements FeedData {
   private _data: BookUi1Data
 
   constructor(snapshotData: BookUi1Data) {
-    snapshotData.feed = "book_ui_1"
     this._data = snapshotData
+    this._data.feed = "book_ui_1"
     this._data.productId = snapshotData["product_id"]
   }
 

@@ -6,14 +6,16 @@ export enum FeedDataName {
 }
 
 type DataFactory = {
-  create(feed: FeedDataName, data: any): FeedData
+  create(feed: FeedDataName, data?: any): FeedData
 }
 
 export const dataFactory = (): DataFactory => {
-  const create = (feed: FeedDataName, data: any): FeedData => {
+  const create = (feed: FeedDataName, data?: any): FeedData => {
     switch (feed) {
       case FeedDataName.BookUi1:
         return new BookUi1(data)
+      default:
+        throw new Error("Feed does not exist")
     }
   }
 
