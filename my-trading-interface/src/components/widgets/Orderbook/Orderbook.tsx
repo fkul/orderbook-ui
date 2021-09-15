@@ -14,22 +14,29 @@ import {
 } from "./Orderbook.styles"
 
 interface OrderbookProps {
+  isVisible?: boolean
   maxLevelCountDesktop?: number
   maxLevelCountMobile?: number
   throttleWaitMs?: number
 }
 
 const Orderbook = ({
+  isVisible = true,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
   throttleWaitMs = 200,
 }: OrderbookProps) => {
   const [book, setBook] = useState<BookUi1Data | null>(null)
-
   const ws = useCfWs()
+
   useEffect(() => {
-    ws.subscribePub("book_ui_1", ["PI_XBTUSD"], onOrderbookUpdateThrottled)
-  }, [])
+    if (isVisible) {
+      ws.subscribePub("book_ui_1", ["PI_XBTUSD"], onOrderbookUpdateThrottled)
+    } else {
+      ws.unsubscribePub("book_ui_1", ["PI_XBTUSD"])
+      setBook(null)
+    }
+  }, [isVisible])
 
   const onOrderbookUpdate = (data: BookUi1Data) => {
     setBook({
