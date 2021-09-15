@@ -59,6 +59,7 @@ const Orderbook = ({
 
   useEffect(() => {
     return () => {
+      unsubscribe(productId)
       onOrderbookUpdateThrottled.cancel()
     }
   }, [])
