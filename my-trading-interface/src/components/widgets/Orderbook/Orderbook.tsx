@@ -3,6 +3,7 @@ import throttle from "lodash/throttle"
 import { useMediaQuery } from "react-responsive"
 import { useAvg } from "@fkul/avg"
 import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
+import Button from "@/components/ui/Button"
 import Loader from "@/components/ui/Loader"
 import Panel from "@/components/ui/Panel"
 import { OrderbookLevel } from "@/types/OrderbookLevel"
@@ -31,19 +32,21 @@ const Orderbook = ({
   maxLevelCountMobile = 12,
 }: OrderbookProps) => {
   const [book, setBook] = useState<BookUi1Data | null>(null)
-  const maxLevelCount = useRef<number>(maxLevelCountDesktop)
+  const [shouldReconnect, setShouldReconnect] = useState<boolean>(false)
   const [throttleWaitMs, setThrottleWaitMs] = useState<number>(100)
+  const maxLevelCount = useRef<number>(maxLevelCountDesktop)
   const avg = useAvg()
   const ws = useCfWs()
   const isMobile = useMediaQuery({ query: "(max-width: 480px)" })
 
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && !shouldReconnect) {
       if (book && book.productId !== productId) {
         unsubscribe(book.productId as ProductId)
       }
       subscribe(productId)
-    } else {
+    } else if (book) {
+      setShouldReconnect(true)
       unsubscribe(productId)
     }
   }, [isVisible, productId])
@@ -105,6 +108,11 @@ const Orderbook = ({
     }
   }
 
+  const onReconnectClick = () => {
+    setShouldReconnect(false)
+    subscribe(productId)
+  }
+
   const analyzeOrders = (rawOrders: number[][]) => {
     const orders: OrderbookLevel[] = []
     let totalSize = 0
@@ -156,7 +164,11 @@ const Orderbook = ({
       <Panel.Body>
         <OrderbookWrapper>
           {!book ? (
-            <Loader />
+            shouldReconnect ? (
+              <Button onClick={onReconnectClick}>Reconnect</Button>
+            ) : (
+              <Loader />
+            )
           ) : (
             <Profiler id="Orderbook" onRender={onProfilerRender}>
               <OrderbookSideSide

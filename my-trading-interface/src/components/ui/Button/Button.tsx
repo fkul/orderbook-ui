@@ -1,4 +1,4 @@
-import { Button as ButtonElement } from "./Button.styles"
+import { ButtonElement } from "./Button.styles"
 
 interface ButtonProps {
   onClick?: () => void
