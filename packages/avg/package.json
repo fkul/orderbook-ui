@@ -1,0 +1,17 @@
+{
+  "name": "@fkul/avg",
+  "version": "1.0.0",
+  "description": "Helps at calculating an average of numbers",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "author": "Filip Kulpiński <fil.kul@gmail.com>",
+  "license": "MIT"
+}
