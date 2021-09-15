@@ -3,10 +3,14 @@
   "name": "fkul",
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn workspace my-trading-interface dev"
+    "dev": "yarn workspace my-trading-interface dev",
+    "build": "yarn run wsrun --exclude my-trading-interface build"
   },
   "workspaces": [
     "my-trading-interface",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "wsrun": "^5.2.4"
+  }
 }
