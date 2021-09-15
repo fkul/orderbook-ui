@@ -11,7 +11,7 @@ export const parseMessage = (message: MessageEvent<any>): any => {
   })()
 
   if (!jsonMsg.feed || !jsonMsg.product_id) {
-    return null
+    return jsonMsg
   }
 
   switch (jsonMsg.feed) {

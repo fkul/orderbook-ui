@@ -30,10 +30,8 @@ export const useCfWs = (): CfWs => {
     },
     onOpen: () => {
       console.log(`Connected to ${CF_URL}`)
-      const _subscriptions = getSubscriptions()
-
-      for (const feed in _subscriptions) {
-        ws.sendJsonMessage(_subscriptions[feed].message)
+      for (const [feed, subscription] of Object.entries(getSubscriptions())) {
+        ws.sendJsonMessage(subscription.message)
       }
     },
     onClose: () => {
@@ -44,7 +42,14 @@ export const useCfWs = (): CfWs => {
     },
     filter: message => {
       const jsonMsg = parseMessage(message)
-      if (jsonMsg && jsonMsg.feed && hasSubscription(jsonMsg.feed)) {
+
+      if (!jsonMsg.feed || !hasSubscription(jsonMsg.feed)) {
+        return false
+      }
+
+      if (jsonMsg.event) {
+        getSubscription(jsonMsg.feed).status = jsonMsg.event
+      } else {
         getSubscription(jsonMsg.feed).callback(jsonMsg)
       }
       return false
@@ -62,6 +67,7 @@ export const useCfWs = (): CfWs => {
         feed: feed,
         product_ids: products,
       },
+      status: "",
       callback: callback,
     }
     addSubscription(feed, subscription)

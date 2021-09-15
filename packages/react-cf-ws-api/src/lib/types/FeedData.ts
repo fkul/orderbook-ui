@@ -1,4 +1,4 @@
 export type FeedData = {
-  update: (data: any) => void;
-  get: () => any;
-};
+  update: (data: any) => void
+  get: () => any
+}

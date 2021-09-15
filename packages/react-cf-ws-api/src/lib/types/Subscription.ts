@@ -1,6 +1,7 @@
-import { SubscribeMessage } from "./SubscribeMessage";
+import { SubscribeMessage } from "./SubscribeMessage"
 
 export type Subscription = {
-  message: SubscribeMessage;
-  callback: (data: any) => void;
-};
+  message: SubscribeMessage
+  status: string
+  callback: (data: any) => void
+}
