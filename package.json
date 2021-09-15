@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "yarn workspace my-trading-interface dev",
-    "build": "yarn run wsrun --exclude my-trading-interface build"
+    "build": "yarn run wsrun --exclude my-trading-interface build",
+    "test": "yarn workspaces run test"
   },
   "workspaces": [
     "my-trading-interface",

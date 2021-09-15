@@ -1,4 +1,3 @@
-import { getFeedId, onSnapshot, onUpdate, removeData } from "./data"
 import { removeSubscription } from "./subscriptions"
 import { useCfWs } from "./useCfWs"
 
