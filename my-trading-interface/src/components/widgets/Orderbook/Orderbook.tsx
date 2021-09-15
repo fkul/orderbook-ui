@@ -5,6 +5,7 @@ import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
 import Loader from "@/components/ui/Loader"
 import Panel from "@/components/ui/Panel"
 import { OrderbookLevel } from "@/types/OrderbookLevel"
+import { ProductId } from "@/types/ProductId"
 import OrderbookSideSide from "./OrderbookSide"
 import OrderbookSpread from "./OrderbookSpread"
 import {
@@ -14,13 +15,17 @@ import {
 } from "./Orderbook.styles"
 
 interface OrderbookProps {
+  productId: ProductId
   isVisible?: boolean
   maxLevelCountDesktop?: number
   maxLevelCountMobile?: number
   throttleWaitMs?: number
 }
 
+const FEED = "book_ui_1"
+
 const Orderbook = ({
+  productId,
   isVisible = true,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
@@ -31,12 +36,25 @@ const Orderbook = ({
 
   useEffect(() => {
     if (isVisible) {
-      ws.subscribePub("book_ui_1", ["PI_XBTUSD"], onOrderbookUpdateThrottled)
+      if (book && book.productId !== productId) {
+        unsubscribe(book.productId as ProductId)
+      }
+      subscribe(productId)
     } else {
-      ws.unsubscribePub("book_ui_1", ["PI_XBTUSD"])
-      setBook(null)
+      unsubscribe(productId)
     }
-  }, [isVisible])
+  }, [isVisible, productId])
+
+  const subscribe = (productId: ProductId) => {
+    console.log(`Subscribing to ${FEED}: ${productId}`)
+    ws.subscribePub(FEED, [productId], onOrderbookUpdateThrottled)
+  }
+
+  const unsubscribe = (productId: ProductId) => {
+    console.log(`Unsubscribing from ${FEED}: ${productId}`)
+    ws.unsubscribePub(FEED, [productId])
+    setBook(null)
+  }
 
   const onOrderbookUpdate = (data: BookUi1Data) => {
     setBook({

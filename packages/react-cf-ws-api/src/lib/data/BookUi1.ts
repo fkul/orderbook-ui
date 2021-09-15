@@ -14,6 +14,7 @@ export class BookUi1 implements FeedData {
   constructor(snapshotData: BookUi1Data) {
     snapshotData.feed = "book_ui_1"
     this._data = snapshotData
+    this._data.productId = snapshotData["product_id"]
   }
 
   private _insertLevel(type: string, idx: number, price: number, size: number) {

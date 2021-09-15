@@ -24,7 +24,8 @@ export const GlobalThemedStyles = styled.div`
 `
 
 export const themeDefault = css`
-  --color-primary: #4d37d0;
+  --color-btn-text: #cfc9f1;
+  --color-btn-bg: #4d37d0;
 
   --color-text-primary: #afb2b9;
   --color-text-secondary: #434956;
