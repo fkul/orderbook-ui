@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { Profiler, useState, useEffect, useMemo, useRef } from "react"
 import throttle from "lodash/throttle"
 import { useMediaQuery } from "react-responsive"
+import { useAvg } from "@fkul/avg"
 import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
 import Loader from "@/components/ui/Loader"
 import Panel from "@/components/ui/Panel"
@@ -19,7 +20,6 @@ interface OrderbookProps {
   isVisible?: boolean
   maxLevelCountDesktop?: number
   maxLevelCountMobile?: number
-  throttleWaitMs?: number
 }
 
 const FEED = "book_ui_1"
@@ -29,16 +29,13 @@ const Orderbook = ({
   isVisible = true,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
-  throttleWaitMs,
 }: OrderbookProps) => {
   const [book, setBook] = useState<BookUi1Data | null>(null)
+  const maxLevelCount = useRef<number>(maxLevelCountDesktop)
+  const [throttleWaitMs, setThrottleWaitMs] = useState<number>(100)
+  const avg = useAvg()
   const ws = useCfWs()
-
-  throttleWaitMs =
-    throttleWaitMs ||
-    parseInt(
-      process.env.NEXT_PUBLIC_ORDERBOOK_DEFAULT_THROTTLE_WAIT_MS || "200"
-    )
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" })
 
   useEffect(() => {
     if (isVisible) {
@@ -50,6 +47,18 @@ const Orderbook = ({
       unsubscribe(productId)
     }
   }, [isVisible, productId])
+
+  useEffect(() => {
+    maxLevelCount.current = isMobile
+      ? maxLevelCountMobile
+      : maxLevelCountDesktop
+  }, [isMobile])
+
+  useEffect(() => {
+    return () => {
+      onOrderbookUpdateThrottled.cancel()
+    }
+  }, [])
 
   const subscribe = (productId: ProductId) => {
     console.log(`Subscribing to ${FEED}: ${productId}`)
@@ -64,8 +73,8 @@ const Orderbook = ({
 
   const onOrderbookUpdate = (data: BookUi1Data) => {
     setBook({
-      asks: data.asks,
-      bids: data.bids,
+      asks: data.asks.slice(0, maxLevelCount.current),
+      bids: data.bids.slice(0, maxLevelCount.current),
       feed: data.feed,
       productId: data.productId,
       numLevels: data.numLevels,
@@ -77,11 +86,30 @@ const Orderbook = ({
     [throttleWaitMs]
   )
 
-  const analyzeOrders = (rawOrders: number[][], maxLevelCount: number) => {
+  const onProfilerRender = (
+    id: string,
+    phase: "mount" | "update",
+    actualDuration: number
+  ) => {
+    avg.add(actualDuration)
+    const newThrottleWaitMs = Math.max(100, Math.floor(avg.get() / 10) * 100)
+
+    if (
+      avg.getCount() >= 100 &&
+      Math.abs(newThrottleWaitMs - throttleWaitMs) >= 100
+    ) {
+      console.log(`Changing throttle wait to ${newThrottleWaitMs}ms`)
+      setThrottleWaitMs(newThrottleWaitMs)
+      unsubscribe(productId)
+      subscribe(productId)
+    }
+  }
+
+  const analyzeOrders = (rawOrders: number[][]) => {
     const orders: OrderbookLevel[] = []
     let totalSize = 0
 
-    for (let i = 0; i < rawOrders.length && i < maxLevelCount; i++) {
+    for (let i = 0; i < rawOrders.length; i++) {
       totalSize += rawOrders[i][1]
       orders.push({
         price: rawOrders[i][0],
@@ -104,10 +132,8 @@ const Orderbook = ({
     lowestAsk: OrderbookLevel
   ): number | null => (lowestAsk ? (spread / lowestAsk.price) * 100 : null)
 
-  const isMobile = useMediaQuery({ query: "(max-width: 480px)" })
-  const maxLevelCount = isMobile ? maxLevelCountMobile : maxLevelCountDesktop
-  const bids = book ? analyzeOrders(book.bids, maxLevelCount) : []
-  const asks = book ? analyzeOrders(book.asks, maxLevelCount) : []
+  const bids = book ? analyzeOrders(book.bids) : []
+  const asks = book ? analyzeOrders(book.asks) : []
   const maxTotal = Math.max(
     bids[bids.length - 1]?.total || 0,
     asks[asks.length - 1]?.total || 0
@@ -132,7 +158,7 @@ const Orderbook = ({
           {!book ? (
             <Loader />
           ) : (
-            <>
+            <Profiler id="Orderbook" onRender={onProfilerRender}>
               <OrderbookSideSide
                 type="bids"
                 sortedOrders={bids}
@@ -151,7 +177,7 @@ const Orderbook = ({
                 sortedOrders={asks}
                 maxTotal={maxTotal}
               />
-            </>
+            </Profiler>
           )}
         </OrderbookWrapper>
       </Panel.Body>
