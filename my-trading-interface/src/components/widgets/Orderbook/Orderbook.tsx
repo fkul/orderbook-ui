@@ -29,10 +29,16 @@ const Orderbook = ({
   isVisible = true,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
-  throttleWaitMs = 200,
+  throttleWaitMs,
 }: OrderbookProps) => {
   const [book, setBook] = useState<BookUi1Data | null>(null)
   const ws = useCfWs()
+
+  throttleWaitMs =
+    throttleWaitMs ||
+    parseInt(
+      process.env.NEXT_PUBLIC_ORDERBOOK_DEFAULT_THROTTLE_WAIT_MS || "200"
+    )
 
   useEffect(() => {
     if (isVisible) {
