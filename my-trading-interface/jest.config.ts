@@ -1,5 +1,5 @@
-module.exports = {
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+export default {
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
