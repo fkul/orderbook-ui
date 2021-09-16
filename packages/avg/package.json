@@ -1,6 +1,6 @@
 {
   "name": "@fkul/avg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helps at calculating an average of numbers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
