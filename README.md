@@ -36,7 +36,11 @@ I'm using mature libraries: [react-page-visibility](https://github.com/pgilad/re
 
 ### Moving logic into packages
 
-Moving parts of the code into packages (@fkul/avg and @fkul/react-ws-api) helps to better separate presentation from logic. It also allows to reuse the packages in other projects.
+Moving parts of the code into packages (`@fkul/avg` and `@fkul/react-cf-ws-api`) helps to better separate presentation from logic. It also allows to reuse the packages in other projects.
+
+### WebSocket connection
+
+The package `@fkul/react-cf-ws-api` is using the [react-use-websocket](https://github.com/robtaussig/react-use-websocket) library to establish a WebSocket connection. I've used it successfully in other projects, so the choice with obvious. One great feature I'm making use of in this case as well is the ability to share the WebSocket connection. Multiple components can use a single WebSocket, which is closed and cleaned up when all subscribed components have unsubscribed/unmounted. This allows to initiate the `useCfWs()` hook within the `widget` and not worry that it will end up creating several connections with multiple `widgets` using it.
 
 ### Throttling
 
