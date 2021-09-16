@@ -1,5 +1,5 @@
-import { getFeedId, onSnapshot, onUpdate, removeData } from "./data"
-import { BookUi1Data } from "./data/BookUi1"
+import { onSnapshot, onUpdate, removeData } from "./data"
+import { BookUi1Data } from "./types/data/BookUi1Data"
 import { FeedDataName } from "./dataFactory"
 
 const PRODUCT_ID = "TEST"
@@ -15,10 +15,6 @@ const testData: BookUi1Data = {
 
 beforeEach(() => {
   removeData(PRODUCT_ID, FEED)
-})
-
-test("getFeedId creates a valid ID", () => {
-  expect(getFeedId(PRODUCT_ID, FEED)).toEqual(`${PRODUCT_ID}-${FEED}`)
 })
 
 test("onSnapshot returns provided data", () => {

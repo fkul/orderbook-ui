@@ -1,3 +1,4 @@
+import { CfWsMessage } from "./CfWsMessage"
 import { SubscribeMessage } from "./SubscribeMessage"
 
 export type Subscription = {
@@ -6,4 +7,4 @@ export type Subscription = {
   callback: SubscriptionCallback
 }
 
-export type SubscriptionCallback = (data: any) => void
+export type SubscriptionCallback = (message: CfWsMessage) => void

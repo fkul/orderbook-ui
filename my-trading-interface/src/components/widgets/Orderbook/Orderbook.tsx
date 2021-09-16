@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useMemo, useRef } from "react"
 import throttle from "lodash/throttle"
-import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
+import {
+  useCfWs,
+  CfWsMessage,
+  BookUi1Data,
+  ReadyState,
+} from "@fkul/react-cf-ws-api"
 import { withWidgetProvider } from "@/components/hoc/WidgetProvider"
 import Button from "@/components/ui/Button"
 import Loader from "@/components/ui/Loader"
@@ -80,14 +85,21 @@ const Orderbook = ({
     setBook(null)
   }
 
-  const onOrderbookUpdate = (data: BookUi1Data) => {
-    setBook({
-      asks: data.asks.slice(0, maxLevelCount.current),
-      bids: data.bids.slice(0, maxLevelCount.current),
-      feed: data.feed,
-      productId: data.productId,
-      numLevels: data.numLevels,
-    })
+  const onOrderbookUpdate = (message: CfWsMessage) => {
+    if (
+      message.readyState !== ReadyState.OPEN ||
+      message.subscriptionStatus !== "subscribed"
+    ) {
+      setBook(null)
+    } else if (message.data) {
+      setBook({
+        asks: message.data.asks.slice(0, maxLevelCount.current),
+        bids: message.data.bids.slice(0, maxLevelCount.current),
+        feed: message.data.feed,
+        productId: message.data.productId,
+        numLevels: message.data.numLevels,
+      })
+    }
   }
 
   const onOrderbookUpdateThrottled = useMemo(

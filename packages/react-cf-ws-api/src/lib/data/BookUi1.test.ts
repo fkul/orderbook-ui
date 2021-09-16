@@ -1,4 +1,5 @@
-import { BookUi1, BookUi1Data } from "./BookUi1"
+import { BookUi1Data } from "../types/data/BookUi1Data"
+import { BookUi1 } from "./BookUi1"
 
 let testData: BookUi1Data
 

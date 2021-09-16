@@ -1,12 +1,5 @@
+import { BookUi1Data } from "../types/data/BookUi1Data"
 import { FeedData } from "../types/FeedData"
-
-export type BookUi1Data = {
-  feed: string
-  productId: string
-  asks: number[][]
-  bids: number[][]
-  numLevels: number
-}
 
 export class BookUi1 implements FeedData {
   private _data: BookUi1Data

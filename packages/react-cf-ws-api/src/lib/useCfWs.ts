@@ -35,12 +35,15 @@ export const useCfWs = (): CfWs => {
       for (const [feed, subscription] of Object.entries(getSubscriptions())) {
         ws.sendJsonMessage(subscription.message)
       }
+      _broadcastToSubscribers() // no data, but readyState will be updated
     },
     onClose: () => {
       console.log("Connection closed")
+      _broadcastToSubscribers() // no data, but readyState will be updated
     },
     onError: () => {
       console.log("Connection error occurred")
+      _broadcastToSubscribers() // no data, but readyState will be updated
     },
     filter: message => {
       const jsonMsg = parseMessage(message.data)
@@ -51,12 +54,28 @@ export const useCfWs = (): CfWs => {
 
       if (jsonMsg.event) {
         getSubscription(jsonMsg.feed).status = jsonMsg.event
+        _sendToSubscriber(jsonMsg.feed)
       } else {
-        getSubscription(jsonMsg.feed).callback(jsonMsg)
+        _sendToSubscriber(jsonMsg.feed, jsonMsg)
       }
       return false
     },
   })
+
+  const _sendToSubscriber = (feed: string, data?: any): void => {
+    const subscription = getSubscription(feed)
+    subscription.callback({
+      readyState: ws.readyState,
+      subscriptionStatus: subscription.status,
+      data: data,
+    })
+  }
+
+  const _broadcastToSubscribers = (data?: any): void => {
+    for (const [feed, subscription] of Object.entries(getSubscriptions())) {
+      _sendToSubscriber(feed, data)
+    }
+  }
 
   const subscribePub = (
     feed: string,

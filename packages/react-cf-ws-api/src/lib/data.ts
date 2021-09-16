@@ -7,7 +7,7 @@ type Data = {
 
 const data: Data = {}
 
-export const getFeedId = (productId: string, feed: FeedDataName): string =>
+const _getFeedId = (productId: string, feed: FeedDataName): string =>
   `${productId}-${feed}`
 
 export const onSnapshot = (
@@ -15,7 +15,7 @@ export const onSnapshot = (
   feed: FeedDataName,
   snapshotData: any
 ): any => {
-  const feedId = getFeedId(productId, feed)
+  const feedId = _getFeedId(productId, feed)
 
   try {
     data[feedId] = dataFactory().create(feed, snapshotData)
@@ -30,7 +30,8 @@ export const onUpdate = (
   feed: FeedDataName,
   updateData: any
 ): any => {
-  const feedId = getFeedId(productId, feed)
+  const feedId = _getFeedId(productId, feed)
+
   if (!data[feedId]) {
     return null
   }
@@ -40,6 +41,6 @@ export const onUpdate = (
 }
 
 export const removeData = (productId: string, feed: FeedDataName): void => {
-  const feedId = getFeedId(productId, feed)
+  const feedId = _getFeedId(productId, feed)
   delete data[feedId]
 }

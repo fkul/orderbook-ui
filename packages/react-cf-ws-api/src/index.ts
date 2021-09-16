@@ -1,2 +1,6 @@
 export { useCfWs } from "./lib/useCfWs"
-export { BookUi1Data } from "./lib/data/BookUi1"
+
+// types
+export { ReadyState } from "react-use-websocket"
+export { CfWsMessage } from "./lib/types/CfWsMessage"
+export { BookUi1Data } from "./lib/types/data/BookUi1Data"
