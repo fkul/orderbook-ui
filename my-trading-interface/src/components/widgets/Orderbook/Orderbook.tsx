@@ -1,13 +1,14 @@
 import React, { Profiler, useState, useEffect, useMemo, useRef } from "react"
 import throttle from "lodash/throttle"
-import { useMediaQuery } from "react-responsive"
 import { useAvg } from "@fkul/avg"
 import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
+import { withWidgetProvider } from "@/components/hoc/WidgetProvider"
 import Button from "@/components/ui/Button"
 import Loader from "@/components/ui/Loader"
 import Panel from "@/components/ui/Panel"
 import { OrderbookLevel } from "@/types/OrderbookLevel"
 import { ProductId } from "@/types/ProductId"
+import { Widget } from "@/types/Widget"
 import OrderbookSideSide from "./OrderbookSide"
 import OrderbookSpread from "./OrderbookSpread"
 import {
@@ -16,9 +17,8 @@ import {
   SpreadWrapperMobile,
 } from "./Orderbook.styles"
 
-interface OrderbookProps {
+interface OrderbookProps extends Widget {
   productId: ProductId
-  isVisible?: boolean
   maxLevelCountDesktop?: number
   maxLevelCountMobile?: number
 }
@@ -28,6 +28,7 @@ const FEED = "book_ui_1"
 const Orderbook = ({
   productId,
   isVisible = true,
+  isMobile = false,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
 }: OrderbookProps) => {
@@ -37,7 +38,6 @@ const Orderbook = ({
   const maxLevelCount = useRef<number>(maxLevelCountDesktop)
   const avg = useAvg()
   const ws = useCfWs()
-  const isMobile = useMediaQuery({ query: "(max-width: 480px)" })
 
   useEffect(() => {
     if (isVisible && !shouldReconnect) {
@@ -198,4 +198,4 @@ const Orderbook = ({
   )
 }
 
-export default Orderbook
+export default withWidgetProvider(Orderbook)
