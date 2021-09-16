@@ -104,8 +104,7 @@ const Orderbook = ({
     ) {
       console.log(`Changing throttle wait to ${newThrottleWaitMs}ms`)
       setThrottleWaitMs(newThrottleWaitMs)
-      unsubscribe(productId)
-      subscribe(productId)
+      ws.updateSubscription(FEED, onOrderbookUpdateThrottled)
     }
   }
 

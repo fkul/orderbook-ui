@@ -1,5 +1,5 @@
 import useWebSocket, { ReadyState } from "react-use-websocket"
-import { Subscription } from "./types/Subscription"
+import { Subscription, SubscriptionCallback } from "./types/Subscription"
 import { SubscribeMessage } from "./types/SubscribeMessage"
 import { parseMessage } from "./parseMessage"
 import {
@@ -14,10 +14,11 @@ type CfWs = {
   subscribePub(
     feed: string,
     products: string[],
-    callback: (data?: any) => void
+    callback: SubscriptionCallback
   ): void
   unsubscribePub(feed: string, products: string[]): void
-  getSubscriptionStatus(feed: string): string | null
+  updateSubscription(feed: string, callback: SubscriptionCallback): void
+  getSubscriptionStatus(feed: string): string | undefined
 }
 
 const CF_URL = "wss://www.cryptofacilities.com/ws/v1"
@@ -60,7 +61,7 @@ export const useCfWs = (): CfWs => {
   const subscribePub = (
     feed: string,
     products: string[],
-    callback: () => void
+    callback: SubscriptionCallback
   ): void => {
     const subscription: Subscription = {
       message: {
@@ -68,7 +69,6 @@ export const useCfWs = (): CfWs => {
         feed: feed,
         product_ids: products,
       },
-      status: "",
       callback: callback,
     }
 
@@ -90,10 +90,24 @@ export const useCfWs = (): CfWs => {
     ws.sendJsonMessage(message)
   }
 
-  const getSubscriptionStatus = (feed: string): string | null => {
-    const subscription = getSubscription(feed)
-    return subscription.hasOwnProperty("status") ? subscription.status : null
+  const updateSubscription = (
+    feed: string,
+    callback: SubscriptionCallback
+  ): void => {
+    if (!hasSubscription(feed)) {
+      return
+    }
+    getSubscription(feed).callback = callback
   }
 
-  return { subscribePub, unsubscribePub, getSubscriptionStatus }
+  const getSubscriptionStatus = (feed: string): string | undefined => {
+    return getSubscription(feed).status || undefined
+  }
+
+  return {
+    subscribePub,
+    unsubscribePub,
+    updateSubscription,
+    getSubscriptionStatus,
+  }
 }

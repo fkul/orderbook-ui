@@ -1,4 +1,8 @@
-import { removeSubscription } from "./subscriptions"
+import {
+  getSubscription,
+  hasSubscription,
+  removeSubscription,
+} from "./subscriptions"
 import { useCfWs } from "./useCfWs"
 
 jest.mock("react-use-websocket", () => {
@@ -16,6 +20,8 @@ jest.mock("react-use-websocket", () => {
 
 const FEED = "TEST"
 
+const ws = useCfWs()
+
 beforeEach(() => {
   removeSubscription(FEED)
 })
@@ -25,18 +31,25 @@ afterEach(() => {
 })
 
 test("subscribePub adds subscription", () => {
-  const ws = useCfWs()
   ws.subscribePub(FEED, [], () => {})
-  expect(ws.getSubscriptionStatus(FEED)).toEqual("")
+  expect(hasSubscription(FEED)).toEqual(true)
 })
 
 test("unsubscribePub removes subscription", () => {
-  const ws = useCfWs()
   ws.subscribePub(FEED, [], () => {})
   ws.unsubscribePub(FEED, [])
-  expect(ws.getSubscriptionStatus(FEED)).toEqual(null)
+  expect(hasSubscription(FEED)).toEqual(false)
 })
 
-test("getSubscriptionStatus returns empty status when not subscribed", () => {
-  expect(useCfWs().getSubscriptionStatus(FEED)).toEqual(null)
+test("updateSubscription updates the callback", () => {
+  const callback1 = () => "TEST1"
+  const callback2 = () => "TEST2"
+
+  ws.subscribePub(FEED, [], callback1)
+  ws.updateSubscription(FEED, callback2)
+  expect(getSubscription(FEED).callback).toEqual(callback2)
+})
+
+test("getSubscriptionStatus returns undefined when not subscribed", () => {
+  expect(useCfWs().getSubscriptionStatus(FEED)).toEqual(undefined)
 })
