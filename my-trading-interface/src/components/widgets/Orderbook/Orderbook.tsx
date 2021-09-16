@@ -1,6 +1,5 @@
-import React, { Profiler, useState, useEffect, useMemo, useRef } from "react"
+import React, { useState, useEffect, useMemo, useRef } from "react"
 import throttle from "lodash/throttle"
-import { useAvg } from "@fkul/avg"
 import { useCfWs, BookUi1Data } from "@fkul/react-cf-ws-api"
 import { withWidgetProvider } from "@/components/hoc/WidgetProvider"
 import Button from "@/components/ui/Button"
@@ -29,14 +28,13 @@ const Orderbook = ({
   productId,
   isVisible = true,
   isMobile = false,
+  throttleWaitMs = 100,
   maxLevelCountDesktop = 16,
   maxLevelCountMobile = 12,
 }: OrderbookProps) => {
   const [book, setBook] = useState<BookUi1Data | null>(null)
   const [shouldReconnect, setShouldReconnect] = useState<boolean>(false)
-  const [throttleWaitMs, setThrottleWaitMs] = useState<number>(100)
   const maxLevelCount = useRef<number>(maxLevelCountDesktop)
-  const avg = useAvg()
   const ws = useCfWs()
 
   useEffect(() => {
@@ -56,6 +54,13 @@ const Orderbook = ({
       ? maxLevelCountMobile
       : maxLevelCountDesktop
   }, [isMobile])
+
+  useEffect(() => {
+    if (book) {
+      console.log(`Changing throttle wait to ${throttleWaitMs}ms`)
+      ws.updateSubscription(FEED, onOrderbookUpdateThrottled)
+    }
+  }, [throttleWaitMs])
 
   useEffect(() => {
     return () => {
@@ -89,24 +94,6 @@ const Orderbook = ({
     () => throttle(onOrderbookUpdate, throttleWaitMs),
     [throttleWaitMs]
   )
-
-  const onProfilerRender = (
-    id: string,
-    phase: "mount" | "update",
-    actualDuration: number
-  ) => {
-    avg.add(actualDuration)
-    const newThrottleWaitMs = Math.max(100, Math.floor(avg.get() / 10) * 100)
-
-    if (
-      avg.getCount() >= 100 &&
-      Math.abs(newThrottleWaitMs - throttleWaitMs) >= 100
-    ) {
-      console.log(`Changing throttle wait to ${newThrottleWaitMs}ms`)
-      setThrottleWaitMs(newThrottleWaitMs)
-      ws.updateSubscription(FEED, onOrderbookUpdateThrottled)
-    }
-  }
 
   const onReconnectClick = () => {
     setShouldReconnect(false)
@@ -170,7 +157,7 @@ const Orderbook = ({
               <Loader />
             )
           ) : (
-            <Profiler id="Orderbook" onRender={onProfilerRender}>
+            <>
               <OrderbookSideSide
                 type="bids"
                 sortedOrders={bids}
@@ -189,7 +176,7 @@ const Orderbook = ({
                 sortedOrders={asks}
                 maxTotal={maxTotal}
               />
-            </Profiler>
+            </>
           )}
         </OrderbookWrapper>
       </Panel.Body>
@@ -197,4 +184,4 @@ const Orderbook = ({
   )
 }
 
-export default withWidgetProvider(Orderbook)
+export default withWidgetProvider(Orderbook, true)
