@@ -5,7 +5,7 @@ Helps at calculating an average of numbers.
 ## Getting started
 
 ```sh
-yarn add @fkul/avg@1.0.0
+yarn add @fkul/avg
 ```
 
 ## Interface

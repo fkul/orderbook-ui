@@ -5,7 +5,7 @@ React WebSocket API for Crypto Facilities.
 ## Getting started
 
 ```sh
-yarn add @fkul/react-cf-ws-api@1.0.0
+yarn add @fkul/react-cf-ws-api
 ```
 
 ## Interface
@@ -24,6 +24,7 @@ type CfWs = {
 
 - `subscribePub` - subscribes to a public feed
 - `unsubscribePub` - unsubscribes from a public feed
+- `updateSubscription` - updates an existing subscription
 - `getSubscriptionStatus` - gets the status of a subscription
 
 ## Example

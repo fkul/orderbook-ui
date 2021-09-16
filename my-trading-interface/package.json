@@ -11,8 +11,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@fkul/avg": "1.0.0",
-    "@fkul/react-cf-ws-api": "1.0.0",
+    "@fkul/avg": "^1.0.1",
+    "@fkul/react-cf-ws-api": "^1.0.1",
     "@types/lodash": "^4.14.172",
     "linaria": "^2.1.0",
     "lodash": "^4.17.21",
