@@ -9,7 +9,7 @@ This repository holds the code for a modern trading interface. It uses [yarn wor
 yarn install
 
 # Then build the required packages:
-yarn build
+yarn build:packages
 
 # Finally run the development server:
 yarn dev
