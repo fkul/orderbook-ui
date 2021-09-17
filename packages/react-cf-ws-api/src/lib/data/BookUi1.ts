@@ -28,10 +28,21 @@ export class BookUi1 implements FeedData {
     let currentLevel: number[] | undefined
 
     while (levels.length > 0 || currentLevel !== undefined) {
+      const nextI = type === "asks" ? i + 1 : i - 1
+
+      if (
+        this._data[type][i] &&
+        this._data[type][nextI] &&
+        this._data[type][i][0] >= this._data[type][nextI][0]
+      ) {
+        this._data.asks = this._data.bids = []
+        throw new Error("Orderbook is corrupt")
+      }
+
       if (!currentLevel) {
         currentLevel = levels.shift() || []
       } else {
-        type === "asks" ? i++ : i--
+        i = nextI
       }
 
       const [price, size] = currentLevel
@@ -48,14 +59,23 @@ export class BookUi1 implements FeedData {
   }
 
   update(updateData: BookUi1Data): void {
-    if (!this._data.asks || !this._data.bids) {
+    if (
+      !this._data.asks ||
+      !this._data.asks.length ||
+      !this._data.bids ||
+      !this._data.bids.length
+    ) {
       return
     }
-    if (updateData.asks && updateData.asks.length > 0) {
-      this._updateSide("asks", updateData.asks)
-    }
-    if (updateData.bids && updateData.bids.length > 0) {
-      this._updateSide("bids", updateData.bids, this._data.bids.length - 1)
+    try {
+      if (updateData.asks && updateData.asks.length > 0) {
+        this._updateSide("asks", updateData.asks)
+      }
+      if (updateData.bids && updateData.bids.length > 0) {
+        this._updateSide("bids", updateData.bids, this._data.bids.length - 1)
+      }
+    } catch (e) {
+      throw e
     }
   }
 

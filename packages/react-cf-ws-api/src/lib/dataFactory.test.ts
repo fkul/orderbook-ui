@@ -4,6 +4,7 @@ import { dataFactory, FeedDataName } from "./dataFactory"
 test("create throws an exception if a feed doesn't exist", () => {
   try {
     dataFactory().create(FeedDataName["TEST"])
+    throw new Error("Test failed - exception was not thrown")
   } catch (e) {
     expect(e.message).toEqual("Feed does not exist")
   }

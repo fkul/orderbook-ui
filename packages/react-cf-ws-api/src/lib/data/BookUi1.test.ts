@@ -64,6 +64,22 @@ test("update removes asks", () => {
   expect(book.get().asks).toEqual([[5, 1]])
 })
 
+test("update throws error on corrupt asks", () => {
+  testData.asks.unshift([4, 1])
+  const book = new BookUi1(testData)
+  const updateData = {
+    ...testData,
+    asks: [[4, 2]],
+    bids: [[]],
+  }
+  try {
+    book.update(updateData)
+    throw new Error("Test failed - exception was not thrown")
+  } catch (e) {
+    expect(e.message).toEqual("Orderbook is corrupt")
+  }
+})
+
 test("update inserts bids", () => {
   const book = new BookUi1(testData)
   const updateData = {
@@ -102,4 +118,20 @@ test("update removes bids", () => {
   }
   book.update(updateData)
   expect(book.get().bids).toEqual([[2, 1]])
+})
+
+test("update throws error on corrupt bids", () => {
+  testData.bids.push([1, 1])
+  const book = new BookUi1(testData)
+  const updateData = {
+    ...testData,
+    asks: [],
+    bids: [[1, 2]],
+  }
+  try {
+    book.update(updateData)
+    throw new Error("Test failed - exception was not thrown")
+  } catch (e) {
+    expect(e.message).toEqual("Orderbook is corrupt")
+  }
 })

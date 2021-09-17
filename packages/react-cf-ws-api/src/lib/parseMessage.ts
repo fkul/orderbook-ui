@@ -14,12 +14,17 @@ export const parseMessage = (message: any): any => {
     return jsonMsg
   }
 
-  switch (jsonMsg.feed) {
-    case "book_ui_1":
-      return onUpdate(jsonMsg.product_id, FeedDataName.BookUi1, jsonMsg)
-    case "book_ui_1_snapshot":
-      return onSnapshot(jsonMsg.product_id, FeedDataName.BookUi1, jsonMsg)
-    default:
-      return jsonMsg
+  try {
+    switch (jsonMsg.feed) {
+      case "book_ui_1":
+        return onUpdate(jsonMsg.product_id, FeedDataName.BookUi1, jsonMsg)
+      case "book_ui_1_snapshot":
+        return onSnapshot(jsonMsg.product_id, FeedDataName.BookUi1, jsonMsg)
+      default:
+        return jsonMsg
+    }
+  } catch (e) {
+    e.name = jsonMsg.feed
+    throw e
   }
 }

@@ -35,7 +35,12 @@ export const onUpdate = (
   if (!data[feedId]) {
     return null
   }
-  data[feedId].update(updateData)
+
+  try {
+    data[feedId].update(updateData)
+  } catch (e) {
+    throw e
+  }
 
   return data[feedId].get()
 }

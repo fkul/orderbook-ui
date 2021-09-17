@@ -42,11 +42,21 @@ export const useCfWs = (): CfWs => {
       _broadcastToSubscribers() // no data, but readyState will be updated
     },
     onError: () => {
-      console.log("Connection error occurred")
+      console.error("Connection error occurred")
       _broadcastToSubscribers() // no data, but readyState will be updated
     },
     filter: message => {
-      const jsonMsg = parseMessage(message.data)
+      let jsonMsg: any
+      try {
+        jsonMsg = parseMessage(message.data)
+      } catch (e) {
+        console.error(e.message)
+        if (hasSubscription(e.name)) {
+          getSubscription(e.name).status = "subscribed_failed"
+          _sendToSubscriber(e.name)
+        }
+        return false
+      }
 
       if (!jsonMsg.feed || !hasSubscription(jsonMsg.feed)) {
         return false
@@ -92,10 +102,7 @@ export const useCfWs = (): CfWs => {
     }
 
     addSubscription(feed, subscription)
-
-    if (ws.readyState === ReadyState.OPEN) {
-      ws.sendJsonMessage(subscription.message)
-    }
+    ws.sendJsonMessage(subscription.message)
   }
 
   const unsubscribePub = (feed: string, products: string[]): void => {

@@ -40,6 +40,7 @@ const Orderbook = ({
   const [book, setBook] = useState<BookUi1Data | null>(null)
   const [shouldReconnect, setShouldReconnect] = useState<boolean>(false)
   const maxLevelCount = useRef<number>(maxLevelCountDesktop)
+  const productIdRef = useRef<ProductId>(productId)
   const ws = useCfWs()
 
   useEffect(() => {
@@ -76,6 +77,7 @@ const Orderbook = ({
 
   const subscribe = (productId: ProductId) => {
     console.log(`Subscribing to ${FEED}: ${productId}`)
+    productIdRef.current = productId
     ws.subscribePub(FEED, [productId], onOrderbookUpdateThrottled)
   }
 
@@ -99,6 +101,11 @@ const Orderbook = ({
         productId: message.data.productId,
         numLevels: message.data.numLevels,
       })
+    }
+
+    if (message.subscriptionStatus === "subscribed_failed") {
+      unsubscribe(productIdRef.current)
+      setTimeout(() => subscribe(productIdRef.current), 3000)
     }
   }
 
