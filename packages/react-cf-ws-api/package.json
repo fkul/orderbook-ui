@@ -1,6 +1,6 @@
 {
   "name": "@fkul/react-cf-ws-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React WebSocket API for Crypto Facilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
