@@ -16,7 +16,12 @@ export class BookUi1 implements FeedData {
     }
   }
 
-  private _updateLevel(type: string, idx: number, price: number, size: number) {
+  private _updateOrRemoveLevel(
+    type: string,
+    idx: number,
+    price: number,
+    size: number
+  ) {
     if (size > 0) {
       this._data[type][idx] = [price, size]
     } else {
@@ -52,8 +57,11 @@ export class BookUi1 implements FeedData {
         this._insertLevel(type, idx, price, size)
         currentLevel = undefined
       } else if (this._data[type][i][0] === price) {
-        this._updateLevel(type, i, price, size)
+        this._updateOrRemoveLevel(type, i, price, size)
         currentLevel = undefined
+        if (size !== 0 || type !== "asks") {
+          i = nextI
+        }
       }
     }
   }
