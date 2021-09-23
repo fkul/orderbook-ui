@@ -31,10 +31,7 @@ export const onUpdate = (
   updateData: any
 ): any => {
   const feedId = _getFeedId(productId, feed)
-
-  if (!data[feedId]) {
-    return null
-  }
+  if (!data[feedId]) return null
 
   try {
     data[feedId].update(updateData)

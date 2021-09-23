@@ -1,14 +1,26 @@
+import { OrderbookLevel } from "@/types/OrderbookLevel"
 import { Spread } from "./OrderbookSpread.styles"
 
 interface OrderbookSpreadProps {
-  spread: number
-  spreadPercentage: number
+  asks: OrderbookLevel[]
+  bids: OrderbookLevel[]
 }
 
-const OrderbookSpread = ({
-  spread,
-  spreadPercentage,
-}: OrderbookSpreadProps) => {
+const OrderbookSpread = ({ asks, bids }: OrderbookSpreadProps) => {
+  const calcSpread = (
+    lowestAsk: OrderbookLevel,
+    highestBid: OrderbookLevel
+  ): number | null =>
+    lowestAsk && highestBid ? lowestAsk.price - highestBid.price : null
+
+  const calcSpreadPercentage = (
+    spread: number,
+    lowestAsk: OrderbookLevel
+  ): number | null => (lowestAsk ? (spread / lowestAsk.price) * 100 : null)
+
+  const spread = calcSpread(asks[0], bids[0]) || 0
+  const spreadPercentage = calcSpreadPercentage(spread, asks[0]) || 0
+
   const spreadStr = spread.toLocaleString(undefined, {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,

@@ -1,4 +1,4 @@
-import useWebSocket, { ReadyState } from "react-use-websocket"
+import useWebSocket from "react-use-websocket"
 import { Subscription, SubscriptionCallback } from "./types/Subscription"
 import { SubscribeMessage } from "./types/SubscribeMessage"
 import { parseMessage } from "./parseMessage"
@@ -68,11 +68,12 @@ export const useCfWs = (): CfWs => {
       } else {
         _sendToSubscriber(jsonMsg.feed, jsonMsg)
       }
-      return false
+      return false // always return false to avoid rerendering
     },
   })
 
   const _sendToSubscriber = (feed: string, data?: any): void => {
+    if (!hasSubscription(feed)) return
     const subscription = getSubscription(feed)
     subscription.callback({
       readyState: ws.readyState,
@@ -95,10 +96,10 @@ export const useCfWs = (): CfWs => {
     const subscription: Subscription = {
       message: {
         event: "subscribe",
-        feed: feed,
+        feed,
         product_ids: products,
       },
-      callback: callback,
+      callback,
     }
 
     addSubscription(feed, subscription)
@@ -108,7 +109,7 @@ export const useCfWs = (): CfWs => {
   const unsubscribePub = (feed: string, products: string[]): void => {
     const message: SubscribeMessage = {
       event: "unsubscribe",
-      feed: feed,
+      feed,
       product_ids: products,
     }
 
@@ -120,9 +121,7 @@ export const useCfWs = (): CfWs => {
     feed: string,
     callback: SubscriptionCallback
   ): void => {
-    if (!hasSubscription(feed)) {
-      return
-    }
+    if (!hasSubscription(feed)) return
     getSubscription(feed).callback = callback
   }
 

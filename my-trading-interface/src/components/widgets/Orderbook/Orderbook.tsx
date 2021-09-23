@@ -45,15 +45,19 @@ const Orderbook = ({
 
   useEffect(() => {
     if (isVisible && !shouldReconnect) {
-      if (book && book.productId !== productId) {
-        unsubscribe(book.productId as ProductId)
-      }
       subscribe(productId)
     } else if (book) {
       setShouldReconnect(true)
       unsubscribe(productId)
     }
-  }, [isVisible, productId])
+  }, [isVisible])
+
+  useEffect(() => {
+    if (book && book.productId !== productId) {
+      unsubscribe(book.productId as ProductId)
+      subscribe(productId)
+    }
+  }, [productId])
 
   useEffect(() => {
     maxLevelCount.current = isMobile
@@ -88,9 +92,10 @@ const Orderbook = ({
   }
 
   const onOrderbookUpdate = (message: CfWsMessage) => {
+    const subscriptionStatus = ws.getSubscriptionStatus(FEED)
     if (
       message.readyState !== ReadyState.OPEN ||
-      message.subscriptionStatus !== "subscribed"
+      subscriptionStatus !== "subscribed"
     ) {
       setBook(null)
     } else if (message.data) {
@@ -103,7 +108,7 @@ const Orderbook = ({
       })
     }
 
-    if (message.subscriptionStatus === "subscribed_failed") {
+    if (subscriptionStatus === "subscribed_failed") {
       unsubscribe(productIdRef.current)
       setTimeout(() => subscribe(productIdRef.current), 3000)
     }
@@ -135,35 +140,19 @@ const Orderbook = ({
     return orders
   }
 
-  const calcSpread = (
-    lowestAsk: OrderbookLevel,
-    highestBid: OrderbookLevel
-  ): number | null =>
-    lowestAsk && highestBid ? lowestAsk.price - highestBid.price : null
-
-  const calcSpreadPercentage = (
-    spread: number,
-    lowestAsk: OrderbookLevel
-  ): number | null => (lowestAsk ? (spread / lowestAsk.price) * 100 : null)
-
   const bids = book ? analyzeOrders(book.bids) : []
   const asks = book ? analyzeOrders(book.asks) : []
   const maxTotal = Math.max(
     bids[bids.length - 1]?.total || 0,
     asks[asks.length - 1]?.total || 0
   )
-  const spread = calcSpread(asks[0], bids[0])
-  const spreadPercentage = calcSpreadPercentage(spread || 0, asks[0])
 
   return (
     <Panel>
       <Panel.Header title="Orderbook">
-        {spread && spreadPercentage && (
+        {!isMobile && (
           <SpreadWrapperDesktop>
-            <OrderbookSpread
-              spread={spread}
-              spreadPercentage={spreadPercentage}
-            />
+            <OrderbookSpread asks={asks} bids={bids} />
           </SpreadWrapperDesktop>
         )}
       </Panel.Header>
@@ -182,12 +171,9 @@ const Orderbook = ({
                 sortedOrders={bids}
                 maxTotal={maxTotal}
               />
-              {spread && spreadPercentage && (
+              {isMobile && (
                 <SpreadWrapperMobile>
-                  <OrderbookSpread
-                    spread={spread}
-                    spreadPercentage={spreadPercentage}
-                  />
+                  <OrderbookSpread asks={asks} bids={bids} />
                 </SpreadWrapperMobile>
               )}
               <OrderbookSideSide
