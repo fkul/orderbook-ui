@@ -1,6 +1,17 @@
 # My Trading Interface
 
-This repository holds the code for a modern trading interface. It uses [yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to handle multiple packages. Packages-specific documentation can be found within the particular folders of the packages.
+The objective was to implement a real time orderbook with the assumption that this codebase will be built on in the future. Patterns and implementation details used scale to an application of much larger size - a trading interface.
+
+_This repository uses [yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to handle multiple packages. Packages-specific documentation can be found within the particular folders of the packages._
+
+## Feature set
+
+- A functional, real time orderbook including totals and spread
+- Depth graph is correctly displayed with optimizations for performance
+- A "Toggle Feed" button that allows to switch contracts
+- Design is responsive with orientation changing on mobile devices
+- The WebSocket feed is being disconnected once the app looses focus
+- Rerender requests are throttled
 
 ## Getting started
 
@@ -48,7 +59,7 @@ I'm using [lodash/throttle](https://lodash.com/docs/4.17.15#throttle) to perform
 
 ## Caveats
 
-- linaria is not able to use variables in globals, making theming harder
+- Linaria is not able to use variables in globals, making theming harder
 - RWD breakpoints are hardcoded, which is also result of linaria's limitations
 
 ## Testing
